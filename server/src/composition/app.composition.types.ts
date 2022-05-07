@@ -5,11 +5,13 @@ const TYPES = {
   ExpressApplication: "ExpressApplication",
   ApiRouter: "ApiRouter",
   JsonFileService: "JsonFileService",
-  MovieMaidenDatabaseContext: "MovieMaidenDatabaseContext"
+  MovieMaidenDatabaseContext: "MovieMaidenDatabaseContext",
+  MovieService: "MovieService"
 };
 
 const CONTROLLER_TYPES = {
   HealthController: "HealthController",
+  MovieController: "MovieController"
 }
 
 export { TYPES, CONTROLLER_TYPES };

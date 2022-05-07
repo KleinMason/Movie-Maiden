@@ -6,6 +6,7 @@ import { RouteError } from './models/route-error';
 import { ILogger } from './logger';
 import { CONTROLLER_TYPES, TYPES } from './composition/app.composition.types';
 import { HealthController } from './controllers/health/health.controller';
+import { MovieController } from './controllers/movie/movie.controller';
 
 @injectable()
 export class ApiRouter {
@@ -28,7 +29,8 @@ export class ApiRouter {
 
   private loadControllers = (container: Container): void => {
     this.controllers = [
-      container.get<HealthController>(CONTROLLER_TYPES.HealthController)
+      container.get<HealthController>(CONTROLLER_TYPES.HealthController),
+      container.get<MovieController>(CONTROLLER_TYPES.MovieController)
     ]
   }
 

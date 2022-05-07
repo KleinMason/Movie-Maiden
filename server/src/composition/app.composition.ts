@@ -12,6 +12,8 @@ import { IJsonFileService, JsonFileService } from "../services/json-file.service
 import { ApiRouter } from "../api.router";
 import { HealthController } from "../controllers/health/health.controller";
 import { IMovieMaidenDatabaseContext, MovieMaidenDatabaseContext } from "movie-maiden-database";
+import { IMovieService, MovieService } from "../services/movie.service";
+import { MovieController } from "../controllers/movie/movie.controller";
 
 export function Configure(config: AppConfig): Promise<Container> {
   return configureServices(new Container(), config)
@@ -25,13 +27,14 @@ function configureServices(container: Container, config: AppConfig): Promise<Con
   container.bind<IApiService>(TYPES.ApiService).to(ApiService).inSingletonScope();
   container.bind<express.Application>(TYPES.ExpressApplication).toConstantValue(express());
   container.bind<IJsonFileService>(TYPES.JsonFileService).to(JsonFileService);
-  //shaman: {"lifecycle": "transformation", "args": {"type": "compose", "target": "services"}}
+  container.bind<IMovieService>(TYPES.MovieService).to(MovieService);
   return Promise.resolve(container);
 }
 
 function configureRouter(container: Container): Promise<Container> {
   container.bind<ApiRouter>(TYPES.ApiRouter).to(ApiRouter);
   container.bind<HealthController>(CONTROLLER_TYPES.HealthController).to(HealthController);
+  container.bind<MovieController>(CONTROLLER_TYPES.MovieController).to(MovieController);
   //shaman: {"lifecycle": "transformation", "args": {"type": "compose", "target": "router"}}
   return Promise.resolve(container);
 }
