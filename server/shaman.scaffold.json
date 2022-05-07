@@ -1,0 +1,7 @@
+{
+	"name": "movie-maiden-server",
+	"include": [
+		"movie-maiden-database"
+	],
+	"specs": {}
+}

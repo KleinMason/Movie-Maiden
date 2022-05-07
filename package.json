@@ -1,0 +1,14 @@
+{
+	"name": "movie-maiden",
+	"version": "1.0.0",
+	"description": "Movie bot for discord.",
+	"private": true,
+	"scripts": {
+		"build": "shaman build",
+		"start": "node library/dist/main.js",
+		"debug": "tsc && node ./dist/app.service.js",
+		"test": "nyc mocha"
+	},
+	"author": "Mason Klein",
+	"license": "UNLICENSED"
+}

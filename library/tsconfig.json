@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es2020"],
+    "module": "commonjs",
+    "strict": false,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "declaration": true,
+    "sourceMap": true,
+    "types": ["node"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*.ts"
+, "src/commands/test"  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false
+}

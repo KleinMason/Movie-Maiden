@@ -1,0 +1,36 @@
+{
+  "name": "movie-maiden",
+  "projects": [
+    {
+      "name": "movie-maiden-library",
+      "environment": "node",
+      "type": "library",
+      "path": "library",
+      "include": [
+        "movie-maiden-server"
+      ]
+    },
+    {
+      "name": "movie-maiden-database",
+      "environment": "node",
+      "type": "database",
+      "path": "database"
+    },
+    {
+      "name": "movie-maiden-server",
+      "environment": "node",
+      "type": "server",
+      "path": "server",
+      "include": [
+        "movie-maiden-database"
+      ]
+    }
+  ], 
+  "transform": [
+    {
+      "targetProject": "movie-maiden-server",
+      "transformation": "compose:datacontext",
+      "sourceProject": "movie-maiden-database"
+    }
+  ]
+}
