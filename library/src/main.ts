@@ -1,16 +1,18 @@
 import * as Discord from 'discord.js';
-import { ConfigModel, IConfigModel } from './models/config.model';
+import { ConfigService } from './services/config.service';
 import { PingCommand } from './commands/ping/ping.command';
 import { ICommand } from './commands/command';
 import { TestCommand } from './commands/test/test.command';
+import { AddMovieCommand } from './commands/add-movie/add-movie.command';
 
 const commands: ICommand[] = [
     new PingCommand(),
-    new TestCommand()
+    new TestCommand(),
+    new AddMovieCommand()
 ]
 
-const config: IConfigModel = new ConfigModel();
-const prefix = config.prefix;
+const configService: ConfigService = new ConfigService();
+const prefix = configService.prefix;
 
 const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
@@ -25,8 +27,9 @@ client.on('messageCreate', message => {
     const command = args.shift().toLowerCase();
 
     let cmd = commands.find(c => c.name == command);
+    if (!cmd) return;
 
     cmd.run(message, args, client);
 });
 
-client.login(config.token);
+client.login(configService.token);

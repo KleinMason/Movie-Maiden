@@ -5,9 +5,11 @@
 	"private": true,
 	"scripts": {
 		"build": "shaman build",
+		"restore": "shaman install",
 		"start": "node library/dist/main.js",
-		"debug": "tsc && node ./dist/app.service.js",
-		"test": "nyc mocha"
+		"debug": "shaman build && node library/dist/main.js",
+		"test": "nyc mocha",
+		"server": "node server/dist/app.service.js"
 	},
 	"author": "Mason Klein",
 	"license": "UNLICENSED"

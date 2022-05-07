@@ -15,8 +15,9 @@
 	"license": "UNLICENSED",
 	"dependencies": {
 		"discord.js": "^13.6.0",
-		"npm": "^8.0.0",
-		"movie-maiden-server": "file:..\\server"
+		"movie-maiden-server": "file:..\\server",
+		"node-fetch": "^2.6.1",
+		"npm": "^8.0.0"
 	},
 	"devDependencies": {
 		"@types/chai": "^4.3.0",

@@ -4,6 +4,7 @@ import { ICommand } from "../command";
 
 export class TestCommand implements ICommand {
     get name(): string { return "test" }
+    
     get description(): string { return "test command" };
     
     run = (message: Discord.Message<boolean>, args: string[], discord?: Discord.Client<boolean>): void => {
