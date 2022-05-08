@@ -1,5 +1,4 @@
 import * as Discord from 'discord.js';
-import { ILogService, LogService } from '../../services/log.service';
 import { ICommand } from "../command";
 
 export class TestCommand implements ICommand {
