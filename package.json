@@ -1,6 +1,6 @@
 {
 	"name": "movie-maiden",
-	"version": "1.0.0",
+	"version": "v1.0.0-beta1",
 	"description": "Movie bot for discord.",
 	"private": true,
 	"scripts": {
