@@ -3,6 +3,7 @@ import { ILogService, LogService } from '../../services/log.service';
 import { ICommand } from "../command";
 import { IMovie, Movie } from '../../models/movie.model';
 import { IHttpService, HttpService } from '../../services/http.service';
+import { EmbedService, IEmbedService } from '../../services/embed.service';
 
 export class AddMovieCommand implements ICommand {
     get name(): string { return "addmovie" }
@@ -12,18 +13,25 @@ export class AddMovieCommand implements ICommand {
     constructor() {
         this.logService = new LogService;
         this.httpService = new HttpService;
+        this.embedService = new EmbedService;
     }
 
     private logService: ILogService;
     private httpService: IHttpService;
+    private embedService: IEmbedService;
 
     run = (message: Discord.Message<boolean>, args: string[], discord?: Discord.Client<boolean>): Promise<void> => {
-        console.log(args)
         this.logService.logCommand(this.name);
         let movie: IMovie = new Movie();
         movie.name = args.join(' ');
         return this.httpService.postMovie(movie)
-            .then(m => message.channel.send(`I've added ${m.name} to the movie list!`))
-            .catch(err => message.channel.send(`I ran into an error while adding ${movie.name} to the movie list. It's likely this movie is already in the movie list. If ${movie.name} is not in the movie list, tell Mason he's dumb and has a bug to fix.`));
+            .then(_ => {
+                let embed = this.embedService.addMovieEmbed(movie.name)
+                message.channel.send({embeds: [embed]})
+            })
+            .catch(_ => {
+                let embed = this.embedService.addMovieErrorEmbed(movie.name)
+                message.channel.send({embeds: [embed]})                
+            });
     }
 }
