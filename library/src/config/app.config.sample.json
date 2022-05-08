@@ -1,4 +1,5 @@
 {
-    "token": "<insert discord bot token>",
-    "prefix": "<insert bot command prefix>"
+    "token": "<discord bot token>",
+    "prefix": "<bot command prefix>",
+    "baseApi": "<base api>"
 }
