@@ -1,5 +1,6 @@
 {
     "token": "<discord bot token>",
     "prefix": "<bot command prefix>",
-    "baseApi": "<base api>"
+    "baseApi": "<base api>",
+    "movieDbKey": "Movie DB api key"
 }

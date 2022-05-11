@@ -4,6 +4,8 @@ import { ICommand } from "../command";
 import { IMovie, Movie } from '../../models/movie.model';
 import { IHttpService, HttpService } from '../../services/http.service';
 import { EmbedService, IEmbedService } from '../../services/embed.service';
+import { MovieDb } from 'moviedb-promise';
+import { ConfigService } from '../../services/config.service';
 
 export class AddMovieCommand implements ICommand {
     get name(): string { return "addmovie" }
@@ -14,11 +16,15 @@ export class AddMovieCommand implements ICommand {
         this.logService = new LogService;
         this.httpService = new HttpService;
         this.embedService = new EmbedService;
+        this.configService = new ConfigService;
+        this.movieDb = new MovieDb(this.configService.movieDbKey);
     }
 
     private logService: ILogService;
     private httpService: IHttpService;
     private embedService: IEmbedService;
+    private configService: ConfigService;
+    private movieDb: MovieDb;
 
     run = (message: Discord.Message<boolean>, args: string[], discord?: Discord.Client<boolean>): Promise<void> => {
         this.logService.logCommand(this.name);
