@@ -16,6 +16,8 @@
 	"dependencies": {
 		"discord.js": "^13.6.0",
 		"movie-maiden-server": "file:..\\server",
+		"moviedb-promise": "^3.1.14",
+		"node": "^16.0.0",
 		"node-fetch": "^2.6.1",
 		"npm": "^8.0.0"
 	},
