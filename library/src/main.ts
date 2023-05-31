@@ -18,7 +18,7 @@ const client = new Discord.Client({ intents: ["GUILDS", "GUILD_MESSAGES"] });
 
 client.once('ready', () => {
     console.log('Movie Maiden is online!');
-    client.user.setActivity('Sydney\'s Mom', {type: 'STREAMING', url: 'https://www.twitch.tv/r'})
+    client.user.setActivity('Just Chatting', {type: 'STREAMING', url: 'https://www.twitch.tv/r'})
 });
 
 client.on('messageCreate', message => {
